@@ -35,6 +35,12 @@ a {
     color: inherit;
 }
 
+a:focus-visible,
+summary:focus-visible {
+    outline: 3px solid rgba(245, 158, 11, 0.72);
+    outline-offset: 4px;
+}
+
 .site-header {
     width: 100%;
     position: fixed;
@@ -80,6 +86,57 @@ nav a:hover {
     color: var(--text);
 }
 
+.mobile-menu {
+    display: none;
+    position: relative;
+}
+
+.mobile-menu summary {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    cursor: pointer;
+    list-style: none;
+}
+
+.mobile-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.mobile-menu-panel {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: min(260px, calc(100vw - 40px));
+    display: grid;
+    gap: 6px;
+    padding: 10px;
+    background: rgba(17, 24, 39, 0.98);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.mobile-menu-panel a {
+    padding: 12px 14px;
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mobile-menu-panel a:hover {
+    background: rgba(20, 184, 166, 0.12);
+    color: var(--text);
+}
+
 .hero-section {
     width: min(1120px, 100% - 40px);
     min-height: 100vh;
@@ -101,6 +158,11 @@ nav a:hover {
 
 .hero-content h1 span {
     color: var(--accent);
+}
+
+.hero-content .subtitle span {
+    color: var(--text);
+    font-weight: 700;
 }
 
 .eyebrow {
@@ -158,6 +220,16 @@ nav a:hover {
     border-color: rgba(20, 184, 166, 0.5);
 }
 
+.btn-ghost {
+    border: 1px solid transparent;
+    color: var(--muted);
+}
+
+.btn-ghost:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.04);
+}
+
 .profile-panel {
     padding: 18px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
@@ -177,9 +249,7 @@ nav a:hover {
 }
 
 .profile-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
     gap: 12px;
     margin-top: 16px;
 }
@@ -188,7 +258,16 @@ nav a:hover {
     font-size: 17px;
 }
 
-.profile-info span {
+.role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.role-tags span {
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: rgba(20, 184, 166, 0.12);
     color: var(--accent);
     font-size: 13px;
     font-weight: 700;
@@ -278,6 +357,14 @@ nav a:hover {
 .project-info p {
     color: var(--muted);
     font-size: 15px;
+}
+
+.project-points {
+    display: grid;
+    gap: 8px;
+    margin: 16px 0 0 18px;
+    color: var(--muted);
+    font-size: 14px;
 }
 
 .project-card {
@@ -416,6 +503,10 @@ footer {
 
     nav {
         display: none;
+    }
+
+    .mobile-menu {
+        display: block;
     }
 
     .hero-section {
